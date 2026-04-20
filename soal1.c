@@ -80,7 +80,6 @@ int find_left(int *data, int size, int index) {
     printf("RECOVERED");
     for (short i = 0; i < size; ++i) {
         printf(" %d", data[i]);
-        sum += data[i];
     }
     printf("\n");
     int max = -9999999;
