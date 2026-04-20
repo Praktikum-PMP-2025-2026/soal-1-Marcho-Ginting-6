@@ -3,7 +3,7 @@
  *   Hari dan Tanggal    : Senin, 20 April 2026
  *   Nama (NIM)          : Yozia Gedalya Marcho Ginting (13224001)
  *   Nama File           : soal1.c
- *   Deskripsi           : 
+ *   Deskripsi           : Program memperbaiki data invalid.
  * 
  */
 
@@ -75,9 +75,9 @@ int find_left(int *data, int size, int index) {
     }
 
     int sum = 0;
-    printf("RECOVERED ");
+    printf("RECOVERED");
     for (short i = 0; i < size; ++i) {
-        printf("%d ", data[i]);
+        printf(" %d ", data[i]);
         sum += data[i];
     }
     printf("\n");
