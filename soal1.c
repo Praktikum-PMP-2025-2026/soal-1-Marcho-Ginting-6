@@ -66,7 +66,6 @@ int find_left(int *data, int size, int index) {
             index_right = find_right(data, size, index_corrupt);
             if (index_left != -1 && index_right != -1) {
                 data[index_corrupt] = floor((data[index_left] + data[index_right])); // Floored
-                printf("a\n");
             } else if (index_left == -1 && index_right != -1) {
                 data[index_corrupt] = data[index_right];
             } else if (index_left != -1 && index_right == -1) {
