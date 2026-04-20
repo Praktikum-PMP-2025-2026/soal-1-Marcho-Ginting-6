@@ -63,6 +63,8 @@ int find_left(int *data, int size, int index) {
             index_right = find_right(data, size, index_corrupt);
             if (index_left != -1 && index_right != -1) {
                 data[index_corrupt] = (data[index_left] + data[index_right]) / 2; // Floored
+                if ((data[index_left] + data[index_right] % 2 != 0 && data[index_corrupt] < 0))
+                    data[index_corrupt] -= 1;
             } else if (index_left == -1 && index_right != -1) {
                 data[index_corrupt] = data[index_right];
             } else if (index_left != -1 && index_right == -1) {
@@ -81,6 +83,25 @@ int find_left(int *data, int size, int index) {
         sum += data[i];
     }
     printf("\n");
+    int max = -9999999;
+    int positive = 0;
+    for (short i = 0; i < size; ++i) {
+        if (data[i] >= 0) {
+            sum += data[i];
+            positive++;
+        }
+    }
+
+    if (positive == 0) {
+        int max = -9999999;
+        for (short i = 0; i < size; ++i) {
+            if (data[i] > max) {
+                max = data[i];
+            }
+        sum = max;
+        }
+    }
+    
     printf("MAX_SUM %d", sum);
     return 0;
 }
