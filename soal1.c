@@ -64,9 +64,9 @@ int find_left(int *data, int size, int index) {
             if (index_left != -1 && index_right != -1) {
                 data[index_corrupt] = (data[index_left] + data[index_right]) / 2; // Floored
             } else if (index_left == -1 && index_right != -1) {
-                data[index_corrupt] = data[index_left];
-            } else if (index_left != -1 && index_right == -1) {
                 data[index_corrupt] = data[index_right];
+            } else if (index_left != -1 && index_right == -1) {
+                data[index_corrupt] = data[index_left];
             } else {
                 data[index_corrupt] = 0;
             }
@@ -77,7 +77,7 @@ int find_left(int *data, int size, int index) {
     int sum = 0;
     printf("RECOVERED");
     for (short i = 0; i < size; ++i) {
-        printf(" %d ", data[i]);
+        printf(" %d", data[i]);
         sum += data[i];
     }
     printf("\n");
