@@ -64,7 +64,9 @@ int find_left(int *data, int size, int index) {
             index_left = find_left(data, size, index_corrupt);
             index_right = find_right(data, size, index_corrupt);
             if (index_left != -1 && index_right != -1) {
-                data[index_corrupt] = floor((data[index_left] + data[index_right]) / 2); // Floored
+                data[index_corrupt] = (data[index_left] + data[index_right]) / 2; // Floored
+                if ((data[index_left] + data[index_right]) < 0 && (data[index_left] % data[index_right]) != 0)
+                    data[index_corrupt] -= 1;
             } else if (index_left == -1 && index_right != -1) {
                 data[index_corrupt] = data[index_right];
             } else if (index_left != -1 && index_right == -1) {
