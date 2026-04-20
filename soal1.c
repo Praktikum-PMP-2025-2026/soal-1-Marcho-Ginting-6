@@ -61,7 +61,6 @@ int find_left(int *data, int size, int index) {
         int index_left, index_right = -1;
         if (index_corrupt != -1) {
             past = index_corrupt;
-            printf("%d\n", index_corrupt);
             index_left = find_left(data, size, index_corrupt);
             index_right = find_right(data, size, index_corrupt);
             if (index_left != -1 && index_right != -1) {
