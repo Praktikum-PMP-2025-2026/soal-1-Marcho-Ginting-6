@@ -11,12 +11,13 @@
  #include <stdio.h>
  #include <string.h>
  #include <stdlib.h>
+ #include <math.h>
 
  /************** FUNCTIONS *************/
  // Finds the corrupt data
- int finder(int *data, int size) {
+ int finder(int *data, int size, int past) {
     for (short i = 0; i < size; i++) {
-        if (data[i] == -1) {
+        if (data[i] == -1 && past != i) {
             return i;
         }
     }
@@ -54,17 +55,18 @@ int find_left(int *data, int size, int index) {
     for (short i = 0; i < size; ++i) {
         scanf("%d", &data[i]);
     }
-
+    int past = -1;
     while (1) {
-        int index_corrupt = finder(data, size);
+        int index_corrupt = finder(data, size, past);
         int index_left, index_right = -1;
         if (index_corrupt != -1) {
+            past = index_corrupt;
+            printf("%d\n", index_corrupt);
             index_left = find_left(data, size, index_corrupt);
             index_right = find_right(data, size, index_corrupt);
             if (index_left != -1 && index_right != -1) {
-                data[index_corrupt] = (data[index_left] + data[index_right]) / 2; // Floored
-                if (((data[index_left] + data[index_right]) % 2 != 0 && data[index_corrupt] < 0))
-                    data[index_corrupt] -= 1;
+                data[index_corrupt] = floor((data[index_left] + data[index_right])); // Floored
+                printf("a\n");
             } else if (index_left == -1 && index_right != -1) {
                 data[index_corrupt] = data[index_right];
             } else if (index_left != -1 && index_right == -1) {
